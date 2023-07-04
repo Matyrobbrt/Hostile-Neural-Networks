@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "shadows.hostilenetworks.fabric.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "hostilenetworks.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+    "ModelBakeryMixin"
+  ],
+  "minVersion": "0.8"
+}

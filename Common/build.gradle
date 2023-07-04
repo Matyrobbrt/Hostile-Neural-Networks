@@ -1,0 +1,54 @@
+plugins {
+    id 'fabric-loom' version '1.1.+'
+    id 'maven-publish'
+    id 'idea'
+}
+
+archivesBaseName = "${mod_name}-common-${minecraft_version}"
+
+dependencies {
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}" // DON'T TOUCH floader!
+    implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
+    compileOnly 'shadows.placebo:placebo-1.20.1:1.0.0'
+    compileOnly 'io.github.matyrobbrt:eventdispatcher:1.8.0'
+
+    modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+}
+
+loom {
+    accessWidenerPath = file('src/main/resources/hostilenetworks.accesswidener')
+}
+
+processResources {
+
+    def buildProps = project.properties.clone()
+
+    filesMatching(['pack.mcmeta']) {
+
+        expand buildProps
+    }
+}
+
+tasks.named('remapJar') {
+    enabled = false
+}
+
+tasks.named('jar') {
+    archiveClassifier = ''
+}
+
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            groupId = 'shadows.placebo'
+            artifactId = "placebo-${minecraft_version}"
+            version = project.version
+            artifact tasks.jar
+        }
+    }
+    repositories {
+        mavenLocal()
+    }
+}

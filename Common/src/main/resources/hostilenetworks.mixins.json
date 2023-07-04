@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "shadows.hostilenetworks.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "hostilenetworks.refmap.json",
+  "mixins": [
+    "EntityMixin",
+    "access.LivingEntityAccessor",
+    "access.MenuTypeAccessor"
+  ],
+  "client": [
+    "BEWLRMixin",
+    "ClientPacketListenerMixin",
+    "access.ModelManagerAccessor"
+  ],
+  "minVersion": "0.8"
+}
