@@ -92,6 +92,11 @@ public class DeepLearnerScreen extends PlaceboContainerScreen<DeepLearnerContain
 		}));
 	}
 
+	@Override
+	protected boolean hasClickedOutside(double d, double e, int i, int j, int k) {
+		return super.hasClickedOutside(d, e, i, j, k);
+	}
+
 	public void selectLeft() {
 		if (this.numModels == 0) return;
 		int old = this.selectedModel;

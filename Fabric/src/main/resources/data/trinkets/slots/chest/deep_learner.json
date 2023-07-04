@@ -1,0 +1,5 @@
+{
+  "icon": "hostilenetworks:item/empty_learner_slot",
+  "order": -256,
+  "validator_predicates": ["trinkets:tag"]
+}

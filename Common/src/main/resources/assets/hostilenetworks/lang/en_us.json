@@ -182,5 +182,6 @@
 
 	"enchantment.level.0": "0",
 
-	"curios.identifier.deep_learner": "Deep Learner"
+	"curios.identifier.deep_learner": "Deep Learner",
+	"trinkets.slot.chest.deep_learner": "Deep Learner"
 }

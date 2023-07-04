@@ -1,33 +1,32 @@
 package shadows.hostilenetworks.client;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.world.Container;
-import org.apache.commons.lang3.tuple.Pair;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
-
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.ChatScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import org.apache.commons.lang3.tuple.Pair;
 import shadows.hostilenetworks.Hostile;
 import shadows.hostilenetworks.HostileNetworks;
 import shadows.hostilenetworks.data.CachedModel;
 import shadows.hostilenetworks.data.ModelTier;
 import shadows.hostilenetworks.item.DeepLearnerItem;
+import shadows.placebo.compat.TrinketInventory;
+import shadows.placebo.events.client.RegisterOverlaysEvent;
 
-public class DeepLearnerHudRenderer implements GuiOverlay {
+import java.util.ArrayList;
+import java.util.List;
+
+public class DeepLearnerHudRenderer implements RegisterOverlaysEvent.GuiOverlay {
 
 	private static final ResourceLocation DL_HUD = new ResourceLocation(HostileNetworks.MODID, "textures/gui/deep_learner_hud.png");
 
@@ -39,8 +38,10 @@ public class DeepLearnerHudRenderer implements GuiOverlay {
 
 		ItemStack stack = player.getMainHandItem();
 		if (stack.getItem() != Hostile.Items.DEEP_LEARNER.get()) stack = player.getOffhandItem();
-//		if (stack.getItem() != Hostile.Items.DEEP_LEARNER.get() && ModList.get().isLoaded("curios")) stack = CuriosCompat.getDeepLearner(player);
-		if (stack.getItem() != Hostile.Items.DEEP_LEARNER.get()) return;
+		if (stack.getItem() != Hostile.Items.DEEP_LEARNER.get()) {
+			stack = TrinketInventory.probe(player).flatMap(inv -> inv.findFirstMatching(Hostile.Items.DEEP_LEARNER.get())).orElse(ItemStack.EMPTY);
+		}
+		if (stack.isEmpty()) return;
 
 		Container inv = DeepLearnerItem.getItemHandler(stack);
 		List<Pair<CachedModel, ItemStack>> renderable = new ArrayList<>(4);

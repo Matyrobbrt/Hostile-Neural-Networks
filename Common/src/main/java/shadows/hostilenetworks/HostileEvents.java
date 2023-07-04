@@ -7,7 +7,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -21,6 +20,7 @@ import shadows.hostilenetworks.event.EntityKilledEntityEvent;
 import shadows.hostilenetworks.item.DataModelItem;
 import shadows.hostilenetworks.item.DeepLearnerItem;
 import shadows.hostilenetworks.util.HNNContainerUtil;
+import shadows.placebo.compat.TrinketInventory;
 import shadows.placebo.events.RegisterCommandsEvent;
 
 public class HostileEvents {
@@ -61,10 +61,8 @@ public class HostileEvents {
 		if (e.attacker() instanceof ServerPlayer p) {
 			p.getInventory().items.stream().filter(s -> s.getItem() == Items.DEEP_LEARNER.get()).forEach(dl -> updateModels(dl, e.victim().getType(), 0));
 			if (p.getOffhandItem().getItem() == Items.DEEP_LEARNER.get()) updateModels(p.getOffhandItem(), e.victim().getType(), 0);
-//			if (ModList.get().isLoaded("curios")) {
-//				ItemStack curioStack = CuriosCompat.getDeepLearner(p);
-//				if (curioStack.getItem() == Items.DEEP_LEARNER.get()) updateModels(curioStack, e.victim().getType(), 0);
-//			}
+			TrinketInventory.probe(p).flatMap(inv -> inv.findFirstMatching(Items.DEEP_LEARNER.get()))
+					.ifPresent(learner -> updateModels(learner, e.victim().getType(), 0));
 		}
 	}
 

@@ -13,13 +13,13 @@
       "item": "minecraft:repeater"
     },
 	"R": {
-      "tag": "forge:dusts/redstone"
+      "tag": "placebo:dusts/redstone"
     },
 	"S": {
       "item": "minecraft:smooth_stone"
     },
 	"G": {
-      "tag": "forge:ingots/gold"
+      "tag": "placebo:ingots/gold"
     }
   },
   "result": {

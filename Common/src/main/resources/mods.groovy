@@ -39,6 +39,7 @@ ModsDotGroovy.make {
         entrypoints {
             placeboInit = 'shadows.hostilenetworks.fabric.HostileNetworksFabric'
             placeboClientInit = 'shadows.hostilenetworks.fabric.client.HostileNetworksFabricClient'
+            jei_mod_plugin = 'shadows.hostilenetworks.jei.HostileJeiPlugin'
         }
 
         onFabric {

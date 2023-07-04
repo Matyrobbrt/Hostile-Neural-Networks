@@ -7,16 +7,16 @@
   ],
   "key": {
     "G": {
-      "tag": "forge:glass_panes"
+      "tag": "placebo:glass_panes"
     },
 	"I": {
-      "tag": "forge:ingots/iron"
+      "tag": "placebo:ingots/iron"
     },
 	"L": {
       "item": "minecraft:clay_ball"
     },
 	"D": {
-      "tag": "forge:ingots/gold"
+      "tag": "placebo:ingots/gold"
     }
   },
   "result": {

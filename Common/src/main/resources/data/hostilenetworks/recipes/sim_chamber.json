@@ -7,16 +7,16 @@
   ],
   "key": {
     "P": {
-      "tag": "forge:glass_panes"
+      "tag": "placebo:glass_panes"
     },
     "E": {
       "item": "minecraft:ender_pearl"
     },
 	"O": {
-      "tag": "forge:obsidian"
+      "tag": "placebo:obsidian"
     },
 	"L": {
-      "tag": "forge:gems/lapis"
+      "tag": "placebo:gems/lapis"
     },
 	"C": {
       "item": "minecraft:comparator"

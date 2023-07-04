@@ -16,10 +16,12 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import shadows.hostilenetworks.HostileClient;
 import shadows.hostilenetworks.HostileNetworks;
 import shadows.hostilenetworks.event.EntityInteractSpecificEvent;
 import shadows.hostilenetworks.event.EntityKilledEntityEvent;
@@ -31,6 +33,11 @@ import shadows.placebo.events.ModEventBus;
 public class HostileNetworksForge {
     public HostileNetworksForge() {
         new HostileNetworks(ModEventBus.grabBus(HostileNetworks.MODID));
+
+        if (FMLEnvironment.dist.isClient()) {
+            Placebo.BUS.register(HostileClient.class);
+        }
+
         MinecraftForge.EVENT_BUS.addGenericListener(BlockEntity.class, (final AttachCapabilitiesEvent<BlockEntity> event) -> {
             if (event.getObject() instanceof HNNBlockEntity entity) {
                 event.addCapability(new ResourceLocation(HostileNetworks.MODID, "inventory"), new ICapabilityProvider() {

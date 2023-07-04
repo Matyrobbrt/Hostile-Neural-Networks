@@ -82,7 +82,10 @@ public class HostileNetworks {
 			.icon(() -> Hostile.Blocks.SIM_CHAMBER.get().asItem().getDefaultInstance())
 			.build();
 
+	public static EventBus modBus;
+
 	public HostileNetworks(EventBus modBus) {
+		HostileNetworks.modBus = modBus;
 		modBus.register(this);
 		Placebo.BUS.register(HostileNetworks.class);
 		Placebo.BUS.register(HostileEvents.class);

@@ -7,16 +7,16 @@
   ],
   "key": {
     "P": {
-      "tag": "forge:ingots/netherite"
+      "tag": "placebo:ingots/netherite"
     },
     "E": {
-      "tag": "forge:gems/diamond"
+      "tag": "placebo:gems/diamond"
     },
 	"O": {
-      "tag": "forge:obsidian"
+      "tag": "placebo:obsidian"
     },
 	"L": {
-      "tag": "forge:ingots/gold"
+      "tag": "placebo:ingots/gold"
     },
 	"C": {
       "item": "minecraft:comparator"

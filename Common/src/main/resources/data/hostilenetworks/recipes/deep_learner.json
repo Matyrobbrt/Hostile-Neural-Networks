@@ -7,13 +7,13 @@
   ],
   "key": {
     "P": {
-      "tag": "forge:glass_panes"
+      "tag": "placebo:glass_panes"
     },
 	"O": {
-      "tag": "forge:obsidian"
+      "tag": "placebo:obsidian"
     },
 	"R": {
-      "tag": "forge:dusts/redstone"
+      "tag": "placebo:dusts/redstone"
     },
 	"C": {
       "item": "minecraft:repeater"

@@ -124,7 +124,7 @@ public class LootFabTileEntity extends HNNBlockEntity implements TickingBlockEnt
 
 	private CompoundTag writeSync() {
 		CompoundTag tag = new CompoundTag();
-		tag.put("saved_selections", this.writeSelections(new CompoundTag()));
+		saveAdditional(tag);
 		return tag;
 	}
 
